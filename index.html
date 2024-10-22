@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic YouTube Embed</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamic YouTube Video Embed</h1>
+  <div id="video-container">
+    <iframe 
+      id="youtube-video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    const defaultVideoId = "p99-zMashuY";
+    const videoId = new URLSearchParams(location.search).get("id") || defaultVideoId;
+    const iframe = document.getElementById("youtube-video");
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  </script>
+</body>
+</html>
